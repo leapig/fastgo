@@ -1,0 +1,52 @@
+@import './common.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+@import './transition.scss';
+
+img {
+  display: block;
+}
+
+/** 列表弹性布局列 */
+.table-flex-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /** 链接按钮样式 */
+  .el-button.is-link {
+    line-height: normal;
+  }
+  /** 下拉链接文字样式 */
+  .el-link__inner span {
+    line-height: normal;
+  }
+}
+
+/** 抽屉内容框样式 */
+.drawer-content {
+  padding: 20px 0;
+  .detail-content {
+    padding: 10px 20px;
+    .label {
+      display: inline-block;
+      width: 110px;
+      text-align: right;
+    }
+    .desc-image {
+      display: flex;
+      padding: 10px;
+      justify-content: center;
+    }
+  }
+}
+
+.avatar-name-button {
+  padding: 0 2px !important;
+  .label {
+    margin: 0 5px;
+    max-width: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,2979 @@
+definitions:
+  enterprise.PostNewReq:
+    properties:
+      address_code:
+        type: string
+      city:
+        type: string
+      code:
+        type: string
+      country:
+        type: string
+      county:
+        type: string
+      district:
+        type: string
+      enterprise_name:
+        type: string
+      latitude:
+        type: string
+      longitude:
+        type: string
+      phone:
+        type: string
+      province:
+        type: string
+      site:
+        type: string
+      staff_size:
+        type: string
+      user_name:
+        type: string
+    type: object
+  enterprise.PostSecurityReq:
+    properties:
+      address_code:
+        type: string
+      city:
+        type: string
+      country:
+        type: string
+      county:
+        type: string
+      district:
+        type: string
+      latitude:
+        type: string
+      longitude:
+        type: string
+      name:
+        type: string
+      province:
+        type: string
+      site:
+        type: string
+      staff_size:
+        type: string
+    type: object
+  enterprise.PutCorporateReq:
+    properties:
+      corporatePk:
+        type: string
+      pk:
+        type: string
+    type: object
+  enterprise.PutSecurityReq:
+    properties:
+      address_code:
+        type: string
+      city:
+        type: string
+      country:
+        type: string
+      county:
+        type: string
+      district:
+        type: string
+      latitude:
+        type: string
+      longitude:
+        type: string
+      name:
+        type: string
+      pk:
+        type: string
+      province:
+        type: string
+      site:
+        type: string
+      staff_size:
+        type: string
+    type: object
+  jwt._Code:
+    properties:
+      code:
+        type: string
+    type: object
+  jwt.EnterprisePk:
+    properties:
+      enterprise_pk:
+        type: string
+    type: object
+  jwt.KeyCode:
+    properties:
+      code:
+        type: string
+      key:
+        type: string
+    type: object
+  personnel.DeleteReq:
+    properties:
+      pk:
+        type: string
+    type: object
+  personnel.DimissionEnterpriseUserReq:
+    properties:
+      pk:
+        type: string
+    type: object
+  personnel.EnterpriseUserAttachment:
+    properties:
+      enterprise_pk:
+        type: string
+      file_name:
+        type: string
+      file_type:
+        type: string
+      pk:
+        type: string
+      user_pk:
+        type: string
+    type: object
+  personnel.PostDepartmentReq:
+    properties:
+      name:
+        type: string
+      parent_pk:
+        type: string
+    type: object
+  personnel.PostEnterpriseUserReq:
+    properties:
+      address:
+        type: string
+      birthday:
+        type: string
+      department_pk:
+        items:
+          type: string
+        type: array
+      education:
+        type: string
+      emergency_contact:
+        type: string
+      emergency_contact_phone:
+        type: string
+      gender:
+        type: integer
+      height:
+        type: string
+      job_number:
+        type: string
+      job_title:
+        type: string
+      name:
+        type: string
+      nation:
+        type: string
+      phone:
+        type: string
+      term_of_contract:
+        type: string
+      weight:
+        type: string
+    type: object
+  personnel.PutDepartmentReq:
+    properties:
+      leader:
+        type: string
+      name:
+        type: string
+      parent_pk:
+        type: string
+      pk:
+        type: string
+    type: object
+  personnel.PutEnterpriseUserReq:
+    properties:
+      address:
+        type: string
+      birthday:
+        type: string
+      body_report_file_names:
+        items:
+          $ref: '#/definitions/personnel.EnterpriseUserAttachment'
+        type: array
+      contract_file_name:
+        items:
+          $ref: '#/definitions/personnel.EnterpriseUserAttachment'
+        type: array
+      department_pk:
+        items:
+          type: string
+        type: array
+      education:
+        type: string
+      emergency_contact:
+        type: string
+      emergency_contact_phone:
+        type: string
+      entry_time:
+        type: string
+      gender:
+        type: integer
+      height:
+        type: string
+      job_number:
+        type: string
+      job_title:
+        type: string
+      name:
+        type: string
+      nation:
+        type: string
+      phone:
+        type: string
+      pk:
+        type: string
+      review_file_names:
+        items:
+          $ref: '#/definitions/personnel.EnterpriseUserAttachment'
+        type: array
+      term_of_contract:
+        type: string
+      weight:
+        type: string
+    type: object
+  rbac.CreateInterfaceResourceReq:
+    properties:
+      interface_key:
+        type: string
+      interface_name:
+        type: string
+      interface_url:
+        type: string
+      interface_way:
+        type: string
+    type: object
+  rbac.CreateMenuResourceReq:
+    properties:
+      icon:
+        type: string
+      menu_name:
+        type: string
+      menu_type:
+        type: integer
+      parent_pk:
+        type: string
+      path:
+        type: string
+      resource_key:
+        type: string
+      sort:
+        type: integer
+    type: object
+  rbac.CreatePageInterfaceReq:
+    properties:
+      interface_pk:
+        type: string
+      operation_type:
+        type: integer
+      page_pk:
+        type: string
+    type: object
+  rbac.CreatePageResourceReq:
+    properties:
+      component:
+        type: string
+      component_name:
+        type: string
+      is_cache:
+        type: integer
+      page_name:
+        type: string
+      page_path:
+        type: string
+      page_type:
+        type: integer
+    type: object
+  rbac.CreatePermissionGroupPermissionReq:
+    properties:
+      permission_group_pk:
+        type: string
+      permission_pk:
+        type: string
+    type: object
+  rbac.CreatePermissionGroupReq:
+    properties:
+      enterprise_pk:
+        type: string
+      group_name:
+        type: string
+      group_type:
+        type: integer
+      remark:
+        type: string
+    type: object
+  rbac.CreatePermissionReq:
+    properties:
+      enterprise_pk:
+        type: string
+      operation_type:
+        type: integer
+      permission_name:
+        type: string
+      resource:
+        type: string
+      resource_type:
+        type: integer
+      visibility:
+        type: integer
+    type: object
+  rbac.CreateRoleGroupPermissionReq:
+    properties:
+      permission_pk:
+        type: string
+      permission_type:
+        type: integer
+      role_group_pk:
+        type: string
+    type: object
+  rbac.CreateRoleGroupReq:
+    properties:
+      enterprise_pk:
+        type: string
+      remark:
+        type: string
+      role_group_name:
+        type: string
+    type: object
+  rbac.CreateRolePermissionReq:
+    properties:
+      permission_pk:
+        type: string
+      permission_type:
+        type: integer
+      role_pk:
+        type: string
+    type: object
+  rbac.CreateRoleReq:
+    properties:
+      enterprise_pk:
+        type: string
+      remark:
+        type: string
+      role_name:
+        type: string
+    type: object
+  rbac.CreateUserPermissionReq:
+    properties:
+      enterprise_pk:
+        type: string
+      permission_pk:
+        example: ${权限主键}
+        type: string
+      permission_type:
+        type: integer
+      user_pk:
+        type: string
+    type: object
+  rbac.DeleteReq:
+    properties:
+      pk:
+        type: string
+    type: object
+  rbac.PostPermissionGroupPermissionReq:
+    properties:
+      permission_group_pk:
+        type: string
+      permission_pk:
+        type: string
+    type: object
+  rbac.PostPermissionGroupReq:
+    properties:
+      group_name:
+        type: string
+      remark:
+        type: string
+    type: object
+  rbac.PostRoleGroupPermissionReq:
+    properties:
+      permission_pk:
+        type: string
+      permission_type:
+        type: integer
+      role_group_pk:
+        type: string
+    type: object
+  rbac.PostRoleGroupReq:
+    properties:
+      enterprise_pk:
+        type: string
+      remark:
+        type: string
+      role_group_name:
+        type: string
+    type: object
+  rbac.PostRolePermissionReq:
+    properties:
+      permission_pk:
+        type: string
+      permission_type:
+        type: integer
+      role_pk:
+        type: string
+    type: object
+  rbac.PostRoleReq:
+    properties:
+      remark:
+        type: string
+      role_name:
+        type: string
+    type: object
+  rbac.PostUserPermissionReq:
+    properties:
+      permission_pk:
+        example: ${权限主键}
+        type: string
+      permission_type:
+        type: integer
+      user_pk:
+        type: string
+    type: object
+  rbac.PutPermissionGroupReq:
+    properties:
+      group_name:
+        type: string
+      pk:
+        type: string
+      remark:
+        type: string
+    type: object
+  rbac.PutRoleGroupReq:
+    properties:
+      pk:
+        type: string
+      remark:
+        type: string
+      role_group_name:
+        type: string
+    type: object
+  rbac.PutRoleReq:
+    properties:
+      pk:
+        type: string
+      remark:
+        type: string
+      role_name:
+        type: string
+    type: object
+  rbac.UpdateInterfaceResourceReq:
+    properties:
+      interface_key:
+        type: string
+      interface_name:
+        type: string
+      interface_url:
+        type: string
+      interface_way:
+        type: string
+      pk:
+        type: string
+    type: object
+  rbac.UpdateMenuResourceReq:
+    properties:
+      icon:
+        type: string
+      menu_name:
+        type: string
+      menu_type:
+        type: integer
+      parent_pk:
+        type: string
+      path:
+        type: string
+      pk:
+        type: string
+      resource_key:
+        type: string
+      sort:
+        type: integer
+    type: object
+  rbac.UpdatePageResourceReq:
+    properties:
+      component:
+        type: string
+      component_name:
+        type: string
+      is_cache:
+        type: integer
+      page_name:
+        type: string
+      page_path:
+        type: string
+      page_type:
+        type: integer
+      pk:
+        type: string
+    type: object
+  rbac.UpdaterPermissionGroupReq:
+    properties:
+      group_name:
+        type: string
+      group_type:
+        type: integer
+      pk:
+        type: string
+      remark:
+        type: string
+    type: object
+  rbac.UpdaterPermissionReq:
+    properties:
+      operation_type:
+        type: integer
+      permission_name:
+        type: string
+      pk:
+        type: string
+      resource:
+        type: string
+      resource_type:
+        type: integer
+      visibility:
+        type: integer
+    type: object
+  rbac.UpdaterRoleReq:
+    properties:
+      pk:
+        type: string
+      remark:
+        type: string
+      role_name:
+        type: string
+    type: object
+  user._UserPk:
+    properties:
+      user_pk:
+        type: string
+    type: object
+  user.Account:
+    properties:
+      name:
+        type: string
+      phone:
+        type: string
+    type: object
+  user.CreateUserCredentialsReq:
+    properties:
+      back_file_name:
+        type: string
+      front_file_name:
+        type: string
+      name:
+        type: string
+      serial:
+        type: string
+      type:
+        type: integer
+    type: object
+  user.DeleteUserCredentialsReq:
+    properties:
+      pk:
+        type: string
+    type: object
+  user.PhoneChangeReq:
+    properties:
+      phone:
+        type: string
+      user_pk:
+        type: string
+    type: object
+  user.SetUserBaseInfoReq:
+    properties:
+      birthday:
+        type: string
+      gender:
+        type: integer
+      height:
+        type: string
+      id_card:
+        type: string
+      name:
+        type: string
+      pk:
+        type: string
+      weight:
+        type: string
+    type: object
+  user.VerifyUserReq:
+    properties:
+      face:
+        type: string
+      id_card:
+        type: string
+      name:
+        type: string
+      url:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /open-apis/core/auth/wechat/phone:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 小程序code
+        in: query
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: 小程序获取用户绑定手机号
+      tags:
+      - open-apis/core
+  /open-apis/core/enterprise/applist:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 小程序获取用户单位列表(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/enterprise/corporate:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/enterprise.PutCorporateReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 修改单位负责人(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/enterprise/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/enterprise.PostSecurityReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 小程序老用户新增安保单位(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/enterprise/list:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取用户单位列表(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/enterprise/new:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/enterprise.PostNewReq'
+      produces:
+      - application/json
+      responses: {}
+      summary: 小程序新用户新增安保单位接口
+      tags:
+      - open-apis/core
+  /open-apis/core/enterprise/security:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 名称
+        in: query
+        name: name
+        type: string
+      - description: 信用代码
+        in: query
+        name: serial
+        type: string
+      - description: 区域编码
+        in: query
+        name: address_code
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取安保单位列表(UserAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/enterprise.PostSecurityReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增安保单位(UserAccessToken)
+      tags:
+      - open-apis/core
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/enterprise.PutSecurityReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 修改单位基本信息(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/jwt/tenant/list:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取用户单位列表(UserAccessToken)
+      tags:
+      - jwt模块
+  /open-apis/core/jwt/tenant/menu:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取菜单(TenantAccessToken)
+      tags:
+      - jwt模块
+  /open-apis/core/jwt/tenant/page:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取页面(TenantAccessToken)
+      tags:
+      - jwt模块
+  /open-apis/core/jwt/token/tenant_token:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: param
+        required: true
+        schema:
+          $ref: '#/definitions/jwt.EnterprisePk'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 生成TenantAccessToken(UserAccessToken)
+      tags:
+      - jwt模块
+    put:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 刷新TenantAccessToken(TenantRefreshToken)
+      tags:
+      - jwt模块
+  /open-apis/core/jwt/token/user_token:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: key
+        in: query
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: 后台扫码登录>获取用户UserAccessToken
+      tags:
+      - jwt模块
+    put:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 刷新UserAccessToken（UserRefreshToken）
+      tags:
+      - jwt模块
+  /open-apis/core/jwt/wechat/qrcode:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      summary: 后台扫码登录>获取微信登录二维码
+      tags:
+      - jwt模块
+  /open-apis/core/jwt/wechat/sign_in:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/jwt._Code'
+      produces:
+      - application/json
+      responses: {}
+      summary: 小程序登录获取UserAccessToken
+      tags:
+      - open-apis/core
+  /open-apis/core/jwt/wechat/sign_up:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/jwt.KeyCode'
+      produces:
+      - application/json
+      responses: {}
+      summary: 小程序注册获取UserAccessToken
+      tags:
+      - open-apis/core
+  /open-apis/core/organization/user/base_info:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取用户基础信息(UserAccessToken)
+      tags:
+      - 组织架构
+  /open-apis/core/organization/user/info:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取用户详细信息(TenantAccessToken)
+      tags:
+      - 组织架构
+  /open-apis/core/personnel/department:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 部门pk
+        in: query
+        name: pk
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除企业部门(TenantAccessToken)
+      tags:
+      - open-apis/core
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取租户部门列表
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/personnel.PostDepartmentReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增部门
+      tags:
+      - open-apis/core
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/personnel.PutDepartmentReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 修改部门名称
+      tags:
+      - open-apis/core
+  /open-apis/core/personnel/department/member:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 部门pk
+        in: query
+        name: department_pk
+        required: true
+        type: string
+      - description: 工号
+        in: query
+        name: job_number
+        type: string
+      - description: 职称
+        in: query
+        name: job_title
+        type: string
+      - description: 是否主管
+        in: query
+        name: is_leader
+        type: integer
+      - description: 员工姓名
+        in: query
+        name: name
+        type: string
+      - description: 员工手机
+        in: query
+        name: phone
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取部门人员列表接口(TenantAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/personnel/enterprise/user:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/personnel.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 租户下人员删除 (tenant_access_token)
+      tags:
+      - open-apis/core
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 姓名
+        in: query
+        name: name
+        type: string
+      - description: 手机号
+        in: query
+        name: phone
+        type: string
+      - description: 性别
+        in: query
+        name: gender
+        type: integer
+      - description: 职称
+        in: query
+        name: job_title
+        type: string
+      - description: 工号
+        in: query
+        name: job_number
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: 获取租户人员信息_人员档案(tenant_access_token)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/personnel.PostEnterpriseUserReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 租户下新增人员接口
+      tags:
+      - open-apis/core
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/personnel.PutEnterpriseUserReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 租户下人员信息修改
+      tags:
+      - open-apis/core
+  /open-apis/core/personnel/enterprise/user/detail:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 用户pk
+        in: query
+        name: user_pk
+        required: true
+        type: string
+      - description: 单位pk
+        in: query
+        name: enterprise_pk
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取租户人员信息(tenant_access_token)
+      tags:
+      - open-apis/core
+  /open-apis/core/personnel/enterprise/user/dimission:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/personnel.DimissionEnterpriseUserReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 租户人员离职 (tenant_access_token)
+      tags:
+      - open-apis/core
+  /open-apis/core/personnel/enterprise/user/inservice:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 姓名
+        in: query
+        name: name
+        type: string
+      - description: 手机号
+        in: query
+        name: phone
+        type: string
+      - description: 性别
+        in: query
+        name: gender
+        type: integer
+      - description: 职称
+        in: query
+        name: job_title
+        type: string
+      - description: 工号
+        in: query
+        name: job_number
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: 获取在职租户人员信息_人员管理查询接口(tenant_access_token)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/resource/interface:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除接口信息(UserAccessToken)
+      tags:
+      - open-apis/core
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 接口方法
+        in: query
+        name: interface_way
+        type: string
+      - description: 接口路径
+        in: query
+        name: interface_url
+        type: string
+      - description: 接口名
+        in: query
+        name: interface_name
+        type: string
+      - description: 接口标识符
+        in: query
+        name: interface_key
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取接口信息(UserAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.CreateInterfaceResourceReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增接口信息(UserAccessToken)
+      tags:
+      - open-apis/core
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.UpdateInterfaceResourceReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 修改接口信息(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/resource/menu:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除菜单信息(UserAccessToken)
+      tags:
+      - open-apis/core
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 菜单名称
+        in: query
+        name: menu_name
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取菜单信息列表(UserAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.CreateMenuResourceReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增菜单信息(UserAccessToken)
+      tags:
+      - open-apis/core
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.UpdateMenuResourceReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 修改菜单信息(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/resource/page:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除页面资源(UserAccessToken)
+      tags:
+      - open-apis/core
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 页面类型:1平台 2 小程序
+        in: query
+        name: page_type
+        type: integer
+      - description: 路由地址
+        in: query
+        name: page_path
+        type: string
+      - description: 组件名
+        in: query
+        name: component_name
+        type: string
+      - description: 页面名称
+        in: query
+        name: page_name
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取页面及关联接口(UserAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.CreatePageResourceReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增页面资源(UserAccessToken)
+      tags:
+      - open-apis/core
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.UpdatePageResourceReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 修改页面资源(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/resource/page/interface:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除页面资源与接口关联关系(UserAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.CreatePageInterfaceReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增页面资源与接口关联(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/system/permission:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除权限项(UserAccessToken)
+      tags:
+      - open-apis/core
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 租户Pk
+        in: query
+        name: enterprise_pk
+        required: true
+        type: string
+      - description: 操作类型
+        in: query
+        name: operation_type
+        type: integer
+      - description: 权限名称
+        in: query
+        name: permission_name
+        type: string
+      - description: 资源类型
+        in: query
+        name: resource_type
+        type: integer
+      - description: 权限类型
+        in: query
+        name: visibility
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取权限项列表(UserAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.CreatePermissionReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增权限项(UserAccessToken)
+      tags:
+      - open-apis/core
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.UpdaterPermissionReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 修改权限项(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/system/permission/group:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除权限组(UserAccessToken)
+      tags:
+      - open-apis/core
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 租户Pk
+        in: query
+        name: enterprise_pk
+        required: true
+        type: string
+      - description: 组名
+        in: query
+        name: group_name
+        type: string
+      - description: 页数
+        in: query
+        name: group_type
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取权限组列表接口(UserAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.CreatePermissionGroupReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增权限组(UserAccessToken)
+      tags:
+      - open-apis/core
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.UpdaterPermissionGroupReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 修改权限组(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/system/permission/group/permission:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除权限组关联关系(UserAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.CreatePermissionGroupPermissionReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增权限组关联(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/system/role:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除角色(UserAccessToken)
+      tags:
+      - open-apis/core
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 租户Pk
+        in: query
+        name: enterprise_pk
+        required: true
+        type: string
+      - description: 组名
+        in: query
+        name: role_name
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取角色(UserAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.CreateRoleReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增角色(UserAccessToken)
+      tags:
+      - open-apis/core
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.UpdaterRoleReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 修改角色(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/system/role/group:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除角色组(UserAccessToken)
+      tags:
+      - open-apis/core
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 租户Pk
+        in: query
+        name: enterprise_pk
+        required: true
+        type: string
+      - description: 组名
+        in: query
+        name: role_group_name
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取角色组列表(UserAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.CreateRoleGroupReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增角色组(UserAccessToken)
+      tags:
+      - open-apis/core
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.UpdaterRoleReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 修改角色组(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/system/role/group/permission:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除角色组与权限关联关系(UserAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.CreateRoleGroupPermissionReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增角色组与权限关联关系(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/system/role/group/user:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 租户Pk
+        in: query
+        name: enterprise_pk
+        required: true
+        type: string
+      - description: 角色组主键
+        in: query
+        name: role_group_pk
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取角色组人员列表(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/system/role/permission:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除角色与权限关联关系(UserAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.CreateRolePermissionReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增角色与权限关联关系(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/system/role/user:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 租户Pk
+        in: query
+        name: enterprise_pk
+        required: true
+        type: string
+      - description: 角色主键
+        in: query
+        name: role_pk
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取角色人员列表(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/system/user/permission:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除人与权限关联(UserAccessToken)
+      tags:
+      - open-apis/core
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 用户Pk
+        in: query
+        name: user_pk
+        required: true
+        type: string
+      - description: 租户Pk
+        in: query
+        name: enterprise_pk
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取账号权限(UserAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.CreateUserPermissionReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增人与权限关联(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/system/user/role/group:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 用户Pk
+        in: query
+        name: user_pk
+        required: true
+        type: string
+      - description: 租户Pk
+        in: query
+        name: enterprise_pk
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取账号角色及角色组接口(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/tenant/permission:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 操作类型
+        in: query
+        name: operation_type
+        type: integer
+      - description: 权限名称
+        in: query
+        name: permission_name
+        type: string
+      - description: 资源类型
+        in: query
+        name: resource_type
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取权限项列表方法(TenantAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/tenant/permission/group:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除权限组(TenantAccessToken)
+      tags:
+      - open-apis/core
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 租户Pk
+        in: query
+        name: enterprise_pk
+        required: true
+        type: string
+      - description: 组名
+        in: query
+        name: group_name
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取权限组列表(TenantAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.PostPermissionGroupReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增权限组(TenantAccessToken)
+      tags:
+      - open-apis/core
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.PutPermissionGroupReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 修改权限组(TenantAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/tenant/permission/group/permission:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除权限组关联关系(TenantAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.PostPermissionGroupPermissionReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增权限组关联(TenantAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/tenant/role:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除角色(TenantAccessToken)
+      tags:
+      - open-apis/core
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 租户Pk
+        in: query
+        name: enterprise_pk
+        required: true
+        type: string
+      - description: 组名
+        in: query
+        name: role_name
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取角色(TenantAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.PostRoleReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增角色(TenantAccessToken)
+      tags:
+      - open-apis/core
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.PutRoleReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 修改角色(TenantAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/tenant/role/group:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除角色组(TenantAccessToken)
+      tags:
+      - open-apis/core
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 租户Pk
+        in: query
+        name: enterprise_pk
+        required: true
+        type: string
+      - description: 组名
+        in: query
+        name: role_group_name
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取角色组列表(TenantAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.PostRoleGroupReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增角色组(TenantAccessToken)
+      tags:
+      - open-apis/core
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.PutRoleGroupReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 修改角色组(TenantAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/tenant/role/group/permission:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除角色组与权限关联关系(TenantAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.PostRoleGroupPermissionReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增角色组与权限关联关系(TenantAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/tenant/role/group/user:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 租户Pk
+        in: query
+        name: enterprise_pk
+        required: true
+        type: string
+      - description: 角色组主键
+        in: query
+        name: role_group_pk
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取角色组人员列表(TenantAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/tenant/role/permission:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除角色与权限关联关系(TenantAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.PostRolePermissionReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增角色与权限关联关系(TenantAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/tenant/role/user:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 租户Pk
+        in: query
+        name: enterprise_pk
+        required: true
+        type: string
+      - description: 角色主键
+        in: query
+        name: role_pk
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取角色人员列表(TenantAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/tenant/user:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取缓存中的账号权限数据(TenantAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/tenant/user/permission:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.DeleteReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除人与权限关联(TenantAccessToken)
+      tags:
+      - open-apis/core
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 用户Pk
+        in: query
+        name: user_pk
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取账号权限(TenantAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/rbac.PostUserPermissionReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增人与权限关联(TenantAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/rbac/tenant/user/role/group:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 用户Pk
+        in: query
+        name: user_pk
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取账号角色及角色组(TenantAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/tool/file:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 上传文件
+      parameters:
+      - description: 校验文件
+        in: formData
+        name: file
+        type: file
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 上传文件(TenantAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/tool/sms/code:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 手机号
+        in: query
+        name: phone
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 发送短信验证码(TenantAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/user/account:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 姓名
+        in: query
+        name: name
+        type: string
+      - description: 手机
+        in: query
+        name: phone
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 账号列表(UserAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/user.Account'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增账号(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/user/base_info:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/user.SetUserBaseInfoReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 修改用户基础信息(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/user/client:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/user._UserPk'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 解绑用户小程序(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/user/credentials:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/user.DeleteUserCredentialsReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 删除用户证件(UserAccessToken)
+      tags:
+      - open-apis/core
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 获取用户证件信息(UserAccessToken)
+      tags:
+      - open-apis/core
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/user.CreateUserCredentialsReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 新增用户证件(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/user/list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 姓名
+        in: query
+        name: name
+        type: string
+      - description: 手机
+        in: query
+        name: phone
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 用户列表(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/user/member:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: 页数
+        in: query
+        name: size
+        required: true
+        type: integer
+      - description: 姓名
+        in: query
+        name: name
+        type: string
+      - description: 手机
+        in: query
+        name: phone
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 租户的账号列表(TenantAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/user/phone:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/user.PhoneChangeReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 更换用户手机号(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/user/verify:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数体
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/user.VerifyUserReq'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 人证比对(UserAccessToken)
+      tags:
+      - open-apis/core
+  /open-apis/core/user/verify/check:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - bearer: []
+      summary: 查询人证比对(UserAccessToken)
+      tags:
+      - open-apis/core
+swagger: "2.0"

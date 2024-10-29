@@ -1,0 +1,13 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <block>
+      <text>本程序用于内部研发使用，快速获取登录code和手机授权code</text>
+      登录code：<textarea value="{{loginCode}}"></textarea>
+      手机code：<textarea value="{{phoneCode}}"></textarea>
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+          刷新
+        </button>
+    </block>
+  </view>
+</scroll-view>

@@ -1,0 +1,101 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4544173 */
+  src: url('iconfont.svg?t=1721979845654#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-toggle-right:before {
+  content: "\e61b";
+}
+
+.icon-shield:before {
+  content: "\e6c8";
+}
+
+.icon-warehouse:before {
+  content: "\e68d";
+}
+
+.icon-communication-equipment:before {
+  content: "\ea52";
+}
+
+.icon-account:before {
+  content: "\e610";
+}
+
+.icon-logout:before {
+  content: "\e62f";
+}
+
+.icon-picture:before {
+  content: "\e646";
+}
+
+.icon-picture-error:before {
+  content: "\e738";
+}
+
+.icon-monitoring:before {
+  content: "\e88e";
+}
+
+.icon-Directory-tree:before {
+  content: "\e892";
+}
+
+.icon-chart-relation:before {
+  content: "\e78d";
+}
+
+.icon-map-fill:before {
+  content: "\e7b1";
+}
+
+.icon-user-group-fill:before {
+  content: "\e7d3";
+}
+
+.icon-userplus-fill:before {
+  content: "\e7d4";
+}
+
+.icon-user-fill:before {
+  content: "\e7d5";
+}
+
+.icon-user-group:before {
+  content: "\e815";
+}
+
+.icon-user-plus:before {
+  content: "\e816";
+}
+
+.icon-user:before {
+  content: "\e817";
+}
+
+.icon-question-circle:before {
+  content: "\e81f";
+}
+
+.icon-process:before {
+  content: "\e854";
+}
+
+.icon-alert:before {
+  content: "\e85b";
+}
+
+.icon-early-warning:before {
+  content: "\e871";
+}
+

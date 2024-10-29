@@ -1,0 +1,22 @@
+mysql:
+  host: ""
+  port: ""
+  username: ""
+  password: ""
+  database: ""
+redis:
+  host: ""
+  port: ""
+  password: ""
+wx_oa:
+  key: ""
+  app_id: ""
+  app_secret: ""
+  token: ""
+  aes_key: ""
+  scan_template_id: ""
+wx_mp:
+  key: ""
+  app_id: ""
+  app_secret: ""
+  version: ""

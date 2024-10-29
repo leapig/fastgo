@@ -1,0 +1,14 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": ["env.d.ts", "src/**/*", "src/**/*.ts", "src/**/*.js","src/**/*.d.ts", "src/**.vue","src/**/*.vue","src/**/**/*.vue", "src/**/*.json", "types/*.d.ts", "public/device" ],
+  "exclude": ["src/**/__tests__/*", "node_modules"],
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "resolveJsonModule": true
+  }
+}
