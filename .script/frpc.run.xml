@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="frpc" type="ShConfigurationType">
+    <option name="SCRIPT_TEXT" value="# 获取本地 IP local_ip=$(ifconfig | grep &quot;inet &quot; | grep -v 127.0.0.1 | awk '{print $2}' | cut -d '/' -f1 | head -n 1) # 临时文件 temp_file=&quot;temp.toml&quot; while IFS= read -r line; do if [[ $line =~ ^localIP.* ]]; then echo &quot;localIP = \&quot;$local_ip\&quot;&quot; &gt;&gt; $temp_file else echo &quot;$line&quot; &gt;&gt; $temp_file fi done &lt; frpc.toml mv $temp_file frpc.toml docker stop frpc docker rm frpc docker run -d --name frpc -v $PWD/frpc.toml:/etc/frp/frpc.toml snowdreamtech/frpc:latest" />
+    <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+    <option name="SCRIPT_PATH" value="$PROJECT_DIR$/.script/frpc.sh" />
+    <option name="SCRIPT_OPTIONS" value="" />
+    <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+    <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/.script" />
+    <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+    <option name="INTERPRETER_PATH" value="/bin/zsh" />
+    <option name="INTERPRETER_OPTIONS" value="" />
+    <option name="EXECUTE_IN_TERMINAL" value="true" />
+    <option name="EXECUTE_SCRIPT_FILE" value="true" />
+    <envs />
+    <method v="2" />
+  </configuration>
+</component>
