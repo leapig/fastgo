@@ -61,23 +61,23 @@ func (o *userClient) SaveUserClientSubscribe(uu *entity.UserClient) {
 // Find 获取用户绑定关系数据层具体实现
 func (o *userClient) Find(uc *entity.UserClient) (*entity.UserClient, error) {
 	var row *entity.UserClient
+	sql := o.db.Model(&entity.UserClient{}).Where("client_id = ? and client_type = ?", uc.ClientId, uc.ClientType)
 	if uc.OpenId != "" {
-		tx := o.db.Where("client_type = ? AND open_id = ?", uc.ClientType, uc.OpenId).Find(&row)
-		return row, tx.Error
+		sql = sql.Where("open_id = ?", uc.OpenId)
 	}
 	if uc.UserPk != 0 {
-		tx := o.db.Where("client_type = ? AND user_pk=?", uc.ClientType, uc.UserPk).Find(&row)
-		return row, tx.Error
+		sql = sql.Where("user_pk = ?", uc.UserPk)
 	}
 	if uc.WxUnionid != "" {
-		tx := o.db.Where("client_type = ? AND wx_unionid=?", uc.ClientType, uc.WxUnionid).Find(&row)
-		return row, tx.Error
+		sql = sql.Where("wx_unionid = ?", uc.WxUnionid)
+
 	}
-	return nil, errors.New("查询参数有误")
+	tx := sql.Find(&row)
+	return row, tx.Error
 }
 
 func (o *userClient) UpdateUserClientSubscribe(uc *entity.UserClient) error {
-	if tx := o.db.Model(&entity.UserClient{}).Where("open_id=? and client_type=1", uc.OpenId).Updates(structs.Map(struct {
+	if tx := o.db.Model(&entity.UserClient{}).Where("open_id=? and client_id=? and client_type=?", uc.OpenId, uc.ClientId, uc.ClientType).Updates(structs.Map(struct {
 		WxUnionid   string `json:"wx_unionid" db:"" gorm:"column:;comment:wx_unionid"`
 		WxSubscribe *int8  `json:"wx_subscribe" db:"wx_subscribe" gorm:"column:wx_subscribe;comment:关注状态"   structs:"wx_subscribe"`
 	}{WxSubscribe: uc.WxSubscribe, WxUnionid: uc.WxUnionid})); tx.Error != nil {

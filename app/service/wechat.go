@@ -74,6 +74,7 @@ func (o *wechat) Oa() oa.App {
 func (o *wechat) OaSaveSubscribe(openid, clientId string, subscribe int64) {
 	// 查找数据库中是否已经存在该用户的订阅记录
 	old, _ := o.dao.UserClient().Find(&entity.UserClient{
+		ClientId:   clientId,
 		ClientType: 1,
 		OpenId:     openid,
 	})
@@ -128,14 +129,15 @@ func (o *wechat) GetWxOaQrCode() (*pb.LoginQrCodeResp, error) {
 
 // OaScan 公众号扫码登录
 func (o *wechat) OaScan(openid, clientId, sense string) error {
-	o.OaSaveSubscribe(openid, clientId, 1)
 	if loginKey, _ := o.dao.Redis().GetString(loginKeyName + "_" + sense); loginKey == "unUse" {
 		_ = o.dao.Redis().SetEx(loginKeyName+"_"+sense, 60, "use")
 		if userClientOaMessage, err := o.dao.UserClient().Find(&entity.UserClient{
+			ClientId:   clientId,
 			OpenId:     openid,
 			ClientType: 1,
 		}); err == nil && userClientOaMessage.WxUnionid != "" {
 			if userClientMpMessage, err := o.dao.UserClient().Find(&entity.UserClient{
+				ClientId:   o.Mp().Key(),
 				WxUnionid:  userClientOaMessage.WxUnionid,
 				ClientType: 2,
 			}); err == nil && userClientMpMessage.WxUnionid != "" {
@@ -175,7 +177,7 @@ func (o *wechat) OaScan(openid, clientId, sense string) error {
 	} else if loginKey == "use" {
 		return errors.New("该码已被使用")
 	} else {
-		return errors.New("请勿重复扫码")
+		return nil
 	}
 }
 
@@ -191,6 +193,7 @@ func (o *wechat) PlatformLogin(code, key string) error {
 		if userClientMessage, err := o.dao.UserClient().Find(&entity.UserClient{
 			OpenId:     res["openid"].(string),
 			ClientType: 2,
+			ClientId:   o.Mp().Key(),
 		}); err == nil && userClientMessage.UserPk != 0 {
 			_ = o.dao.Redis().SetEx(loginKeyName+"_"+key, 60, strconv.FormatInt(userClientMessage.UserPk, 10))
 			return nil
@@ -222,6 +225,7 @@ func (o *wechat) CreateEnterprise(user *entity.User, code string, enterprise *en
 	clientRes, _ := o.dao.UserClient().Find(&entity.UserClient{
 		ClientType: 2,
 		OpenId:     loginRes["openid"].(string),
+		ClientId:   o.Mp().Key(),
 	})
 	if clientRes.UserPk == 0 {
 		// 获取用户
@@ -235,6 +239,7 @@ func (o *wechat) CreateEnterprise(user *entity.User, code string, enterprise *en
 		}
 		// 创建关系
 		clientRes = &entity.UserClient{
+			ClientId:   o.Mp().Key(),
 			UserPk:     user.Pk,
 			ClientType: 2,
 			OpenId:     loginRes["openid"].(string),
@@ -276,6 +281,7 @@ func (o *wechat) AppletLogin(code string) (string, error) {
 		if userClientMessage, err := o.dao.UserClient().Find(&entity.UserClient{
 			OpenId:     res["openid"].(string),
 			ClientType: 2,
+			ClientId:   o.Mp().Key(),
 		}); err == nil && userClientMessage.UserPk != 0 {
 			return strconv.FormatInt(userClientMessage.UserPk, 10), err
 		}
@@ -308,6 +314,7 @@ func (o *wechat) AppletRegister(loginCode, phoneCode, name string) (string, erro
 	clientRes, _ := o.dao.UserClient().Find(&entity.UserClient{
 		ClientType: 2,
 		OpenId:     loginRes["openid"].(string),
+		ClientId:   o.Mp().Key(),
 	})
 	if clientRes.UserPk == user.Pk {
 		return strconv.FormatInt(user.Pk, 10), nil
@@ -351,6 +358,7 @@ func (o *wechat) CreateEnterpriseForRelationProject(user *entity.User, code stri
 		}
 		// 创建关系
 		clientRes = &entity.UserClient{
+			ClientId:   o.Mp().Key(),
 			UserPk:     user.Pk,
 			ClientType: 2,
 			OpenId:     loginRes["openid"].(string),

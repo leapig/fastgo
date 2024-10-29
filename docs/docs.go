@@ -15,30 +15,6 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/open-apis/core/auth/wechat/phone": {
-            "get": {
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "open-apis/core"
-                ],
-                "summary": "小程序获取用户绑定手机号",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "小程序code",
-                        "name": "key",
-                        "in": "query",
-                        "required": true
-                    }
-                ],
-                "responses": {}
-            }
-        },
         "/open-apis/core/enterprise/applist": {
             "get": {
                 "security": [
@@ -430,6 +406,30 @@ const docTemplate = `{
                 "responses": {}
             }
         },
+        "/open-apis/core/jwt/wechat/phone": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "jwt模块"
+                ],
+                "summary": "小程序获取用户绑定手机号",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "小程序code",
+                        "name": "key",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
         "/open-apis/core/jwt/wechat/qrcode": {
             "get": {
                 "consumes": [
@@ -454,7 +454,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "open-apis/core"
+                    "jwt模块"
                 ],
                 "summary": "小程序登录获取UserAccessToken",
                 "parameters": [
@@ -480,7 +480,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "open-apis/core"
+                    "jwt模块"
                 ],
                 "summary": "小程序注册获取UserAccessToken",
                 "parameters": [

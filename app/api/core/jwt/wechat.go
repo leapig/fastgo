@@ -46,8 +46,8 @@ func AnyCallBack(c *gin.Context) {
 			switch strings.ToLower(res.Event) {
 			case "subscribe":
 				C.S.Wechat().OaSaveSubscribe(query.Openid, res.ToUserName, 1)
-				if res.EventKey != "" {
-					if err := C.S.Wechat().OaScan(query.Openid, res.ToUserName, res.EventKey); err != nil {
+				if eventKey := strings.Split(res.EventKey, "qrscene_"); len(eventKey) == 2 {
+					if err := C.S.Wechat().OaScan(query.Openid, res.ToUserName, eventKey[1]); err != nil {
 						c.String(http.StatusOK, `<xml>
   <ToUserName><![CDATA[`+res.FromUserName+`]]></ToUserName>
   <FromUserName><![CDATA[`+res.ToUserName+`]]></FromUserName>
@@ -92,12 +92,12 @@ func GetQrCode(r *gin.Context) {
 }
 
 // GetPhone
-// @Tags open-apis/core
+// @Tags jwt模块
 // @summary 小程序获取用户绑定手机号
 // @Accept json
 // @Produce  json
 // @Param key query string true "小程序code"
-// @Router	/open-apis/core/auth/wechat/phone [get]
+// @Router	/open-apis/core/jwt/wechat/phone [get]
 func GetPhone(c *gin.Context) {
 	var p _Key
 	if err := c.ShouldBindQuery(&p); err != nil {
@@ -108,7 +108,7 @@ func GetPhone(c *gin.Context) {
 }
 
 // PostSignIn
-// @Tags open-apis/core
+// @Tags jwt模块
 // @summary 小程序登录获取UserAccessToken
 // @Accept json
 // @Produce  json
@@ -127,7 +127,7 @@ func PostSignIn(c *gin.Context) {
 }
 
 // PostSignUp
-// @Tags open-apis/core
+// @Tags jwt模块
 // @summary 小程序注册获取UserAccessToken
 // @Accept json
 // @Produce  json

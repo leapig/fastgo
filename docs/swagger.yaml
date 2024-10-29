@@ -608,22 +608,6 @@ definitions:
 info:
   contact: {}
 paths:
-  /open-apis/core/auth/wechat/phone:
-    get:
-      consumes:
-      - application/json
-      parameters:
-      - description: 小程序code
-        in: query
-        name: key
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses: {}
-      summary: 小程序获取用户绑定手机号
-      tags:
-      - open-apis/core
   /open-apis/core/enterprise/applist:
     get:
       consumes:
@@ -867,6 +851,22 @@ paths:
       summary: 刷新UserAccessToken（UserRefreshToken）
       tags:
       - jwt模块
+  /open-apis/core/jwt/wechat/phone:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 小程序code
+        in: query
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: 小程序获取用户绑定手机号
+      tags:
+      - jwt模块
   /open-apis/core/jwt/wechat/qrcode:
     get:
       consumes:
@@ -893,7 +893,7 @@ paths:
       responses: {}
       summary: 小程序登录获取UserAccessToken
       tags:
-      - open-apis/core
+      - jwt模块
   /open-apis/core/jwt/wechat/sign_up:
     post:
       consumes:
@@ -910,7 +910,7 @@ paths:
       responses: {}
       summary: 小程序注册获取UserAccessToken
       tags:
-      - open-apis/core
+      - jwt模块
   /open-apis/core/organization/user/base_info:
     get:
       consumes:
