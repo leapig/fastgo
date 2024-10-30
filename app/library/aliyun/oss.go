@@ -6,17 +6,7 @@ import (
 	"github.com/aliyun/alibabacloud-oss-go-sdk-v2/oss"
 	"github.com/aliyun/alibabacloud-oss-go-sdk-v2/oss/credentials"
 	"github.com/leapig/fastgo/app/dal/model"
-	"math/rand"
 	"os"
-	"strconv"
-	"time"
-)
-
-const (
-	SystemObject  = 1
-	PrivacyObject = 2
-	GeneralObject = 3
-	DeviceObject  = 4
 )
 
 // Oss 实例对象
@@ -44,32 +34,8 @@ func (a *AliYun) ossConnect() {
 	}
 }
 
-// PutSystemObject 系统文件（管理后台）
-func (a *AliYun) PutSystemObject(object model.Oss) (model.Oss, error) {
-	object.Name = "system/" + time.Now().Format("20060102") + "/" + time.Now().Format("150405") + strconv.Itoa(rand.Intn(10000)) + object.Name
-	return a.putObject(object)
-}
-
-// PutPrivacyObject 隐私数据（小程序）
-func (a *AliYun) PutPrivacyObject(object model.Oss) (model.Oss, error) {
-	object.Name = "privacy/" + time.Now().Format("20060102") + "/" + time.Now().Format("150405") + strconv.Itoa(rand.Intn(10000)) + object.Name
-	return a.putObject(object)
-}
-
-// PutGeneralObject 普通文件（租户）
-func (a *AliYun) PutGeneralObject(object model.Oss) (model.Oss, error) {
-	object.Name = "general/" + time.Now().Format("20060102") + "/" + time.Now().Format("150405") + strconv.Itoa(rand.Intn(10000)) + object.Name
-	return a.putObject(object)
-}
-
-// PutDeviceObject 设备文件（租户）
-func (a *AliYun) PutDeviceObject(object model.Oss) (model.Oss, error) {
-	object.Name = "device/" + object.Sn + time.Now().Format("20060102") + "/" + time.Now().Format("150405") + strconv.Itoa(rand.Intn(10000)) + object.Name
-	return a.putObject(object)
-}
-
-// PubObject 上传对象文件
-func (a *AliYun) putObject(object model.Oss) (model.Oss, error) {
+// PutObject 上传对象文件
+func (a *AliYun) PutObject(object model.Oss) (model.Oss, error) {
 	u := a.OssClient.NewUploader()
 	_, err := u.UploadFrom(context.TODO(), &oss.PutObjectRequest{
 		Bucket: &a.OssBucketName,

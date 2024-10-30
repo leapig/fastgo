@@ -7,9 +7,6 @@ import (
 	"errors"
 	"github.com/dubbogo/gost/log/logger"
 	"github.com/leapig/fastgo/app/dal/dao"
-	"github.com/leapig/fastgo/app/dal/entity"
-	"github.com/leapig/fastgo/app/library/helper"
-	utils "github.com/leapig/fastgo/app/library/util"
 	"github.com/nfnt/resize"
 	"image"
 	"image/jpeg"
@@ -21,8 +18,7 @@ import (
 )
 
 type UserRealNameAuthenticationLog interface {
-	VerifyUser(userPk, name, idCard, face, url string) error
-	CheckRealNameAuthenticationLog(userPk string) error
+	VerifyUser(name, idCard, face string) error
 }
 
 type userRealNameAuthenticationLog struct {
@@ -34,39 +30,11 @@ func NewUserRealNameAuthenticationLog(dao dao.Dao) UserRealNameAuthenticationLog
 	return &userRealNameAuthenticationLog{dao: dao}
 }
 
-func (o *userRealNameAuthenticationLog) VerifyUser(userPk, name, idCard, face, url string) error {
-	_, _, code, _, err := verifyOnline(face, idCard, name)
-	if err != nil {
-		logger.Error("人证核验有问题！！！！！！！！！！！！！！！！！！！！！")
-		return err
-	}
-	if code == 0 {
-		pk := helper.Rid(helper.UserRealNameAuthenticationLog)
-		_, err1 := o.dao.UserRealNameAuthenticationLog().Create(&entity.UserRealNameAuthenticationLog{
-			Pk:     utils.StringToInt64(pk),
-			UserPk: utils.StringToInt64(userPk),
-			Name:   name,
-			IdCard: idCard,
-			Face:   url,
-		})
-		if err1 != nil {
-			logger.Error(err1)
-		}
+func (o *userRealNameAuthenticationLog) VerifyUser(name, idCard, face string) error {
+	if _, _, code, _, err := verifyOnline(face, idCard, name); err == nil && code == 0 {
+		return nil
 	} else {
-		return errors.New("比对错误！！")
-	}
-	return nil
-}
-
-func (o *userRealNameAuthenticationLog) CheckRealNameAuthenticationLog(userPk string) error {
-	if count, err := o.dao.UserRealNameAuthenticationLog().Count(&entity.UserRealNameAuthenticationLog{UserPk: utils.StringToInt64(userPk)}); err != nil {
-		return err
-	} else {
-		if count > 0 {
-			return nil
-		} else {
-			return errors.New("该人员未实名")
-		}
+		return errors.New("认证失败")
 	}
 }
 

@@ -10,7 +10,7 @@ import (
 )
 
 // GetList
-// @Tags jwt模块
+// @Tags 登录鉴权
 // @summary 获取用户单位列表(UserAccessToken)
 // @Accept json
 // @Produce  json
@@ -34,7 +34,7 @@ func GetList(c *gin.Context) {
 }
 
 // GetMenu
-// @Tags jwt模块
+// @Tags 登录鉴权
 // @summary 获取菜单(TenantAccessToken)
 // @Accept json
 // @Produce  json
@@ -48,7 +48,7 @@ func GetMenu(c *gin.Context) {
 }
 
 // GetPage
-// @Tags jwt模块
+// @Tags 登录鉴权
 // @summary 获取页面(TenantAccessToken)
 // @Accept json
 // @Produce  json

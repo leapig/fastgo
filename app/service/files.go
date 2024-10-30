@@ -7,6 +7,9 @@ import (
 	"github.com/leapig/fastgo/app/library/aliyun"
 	"github.com/leapig/fastgo/app/library/helper"
 	utils "github.com/leapig/fastgo/app/library/util"
+	"math/rand"
+	"strconv"
+	"time"
 )
 
 type Files interface {
@@ -30,7 +33,8 @@ func NewFiles(dao dao.Dao) Files {
 func (f *files) SaveFile(tenant string, object model.Oss) (model.Oss, error) {
 	var obj model.Oss
 	var err error
-	obj, err = aliyun.Oss().PutPrivacyObject(object)
+	object.Name = tenant + "/" + time.Now().Format("20060102") + "/" + time.Now().Format("150405") + strconv.Itoa(rand.Intn(10000)) + object.Name
+	obj, err = aliyun.Oss().PutObject(object)
 	if err != nil {
 		return obj, err
 	}
@@ -41,8 +45,6 @@ func (f *files) SaveFile(tenant string, object model.Oss) (model.Oss, error) {
 		Size:         obj.Size,
 		Extension:    obj.Extension,
 		Suffix:       obj.Suffix,
-		Type:         obj.Type,
-		Sn:           obj.Sn,
 	})
 	return obj, err
 }

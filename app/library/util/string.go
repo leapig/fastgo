@@ -8,14 +8,15 @@ import (
 	"time"
 )
 
-// RandomStr 获取指定位数的随机数
-func RandomStr(n int) string {
-	var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
-	b := make([]rune, n)
-	for i := range b {
-		b[i] = letters[rand.Intn(len(letters))]
+// RandomStrByNum 获取指定位数的数字随机数
+func RandomStrByNum(n int) string {
+	rand.Seed(time.Now().UnixNano())
+	number := make([]byte, n)
+	number[0] = byte(rand.Intn(9)) + '1' // 确保第一位不为0
+	for i := 1; i < n; i++ {
+		number[i] = byte(rand.Intn(10)) + '0'
 	}
-	return string(b)
+	return string(number)
 }
 
 // RandomStrByTime 获取指定位数的随机数(用当前时间作为随机因子)

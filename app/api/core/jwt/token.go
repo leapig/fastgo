@@ -10,7 +10,7 @@ import (
 )
 
 // GetUserToken
-// @Tags jwt模块
+// @Tags 登录鉴权
 // @summary 后台扫码登录>获取用户UserAccessToken
 // @Accept json
 // @Produce  json
@@ -20,6 +20,7 @@ func GetUserToken(c *gin.Context) {
 	var p _Key
 	if err := c.ShouldBind(&p); err != nil {
 		utils.FRP(c)
+		return
 	}
 	if res, err := C.S.Wechat().PlatformLoginLoop(p.Key); res == "" || res == "0" {
 		utils.FRA(c)
@@ -29,7 +30,7 @@ func GetUserToken(c *gin.Context) {
 }
 
 // PostTenantToken
-// @Tags jwt模块
+// @Tags 登录鉴权
 // @summary 生成TenantAccessToken(UserAccessToken)
 // @Accept json
 // @Produce  json
@@ -56,7 +57,7 @@ func PostTenantToken(c *gin.Context) {
 }
 
 // PutUserToken
-// @Tags jwt模块
+// @Tags 登录鉴权
 // @summary 刷新UserAccessToken（UserRefreshToken）
 // @Accept json
 // @Produce  json
@@ -66,16 +67,18 @@ func PutUserToken(c *gin.Context) {
 	authHeader := c.Request.Header.Get("Authorization")
 	if authHeader == "" {
 		utils.FRA(c)
+		return
 	}
 	parts := strings.SplitN(authHeader, " ", 2)
 	if !(len(parts) == 2 && strings.ToLower(parts[0]) == "bearer") {
 		utils.FRA(c)
+		return
 	}
 	utils.R(c, jwt.RefreshUserToken(parts[1]), nil)
 }
 
 // PutTenantToken
-// @Tags jwt模块
+// @Tags 登录鉴权
 // @summary 刷新TenantAccessToken(TenantRefreshToken)
 // @Accept json
 // @Produce  json
@@ -85,14 +88,17 @@ func PutTenantToken(c *gin.Context) {
 	authHeader := c.Request.Header.Get("Authorization")
 	if authHeader == "" {
 		utils.FRA(c)
+		return
 	}
 	parts := strings.SplitN(authHeader, " ", 2)
 	if !(len(parts) == 2 && strings.ToLower(parts[0]) == "bearer") {
 		utils.FRA(c)
+		return
 	}
 	token := jwt.RefreshTenantToken(parts[1])
 	if token.TenantAccessToken == "" {
 		utils.FR(c, errors.New("生成失败！"))
+		return
 	} else {
 		//检测权限是否有变动
 		tenantToken, err := jwt.ParseTenantToken(token.TenantAccessToken)
@@ -101,6 +107,7 @@ func PutTenantToken(c *gin.Context) {
 		}
 		if C.S.UserPermission().CheckFullRefreshUserPermissionByUserPkAndEnterprisePk(utils.StringToInt64(tenantToken.UserPk), utils.StringToInt64(tenantToken.TenantPk)) {
 			utils.FR(c, errors.New("权限变动，请重新登录！！"))
+			return
 		}
 		utils.R(c, tenantToken, nil)
 	}

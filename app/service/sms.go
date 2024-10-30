@@ -44,9 +44,6 @@ func (o *sms) SendCode(phone, tenantRid string) error {
 		return te
 	}
 	content := "【AI门岗】您的短信验证码：" + code + "，5分钟内有效，请勿泄漏。"
-	if tenantRid == "" {
-		tenantRid = "0"
-	}
 	if sendMsgErr := o.send(content, phone); sendMsgErr != nil {
 		return sendMsgErr
 	} else {
@@ -75,17 +72,17 @@ func (o *sms) send(content, phone string) error {
 		TimeStamp string `json:"timestamp"`
 	}
 	timestamp := time.Now().Format("0102150405")
-	pwd := utils.MD5(strings.ToUpper(os.Getenv("MV_USERID")) + "00000000" + os.Getenv("MV_PWD") + timestamp)
+	pwd := utils.MD5(strings.ToUpper(os.Getenv("SMS_USERID")) + "00000000" + os.Getenv("SMS_PWD") + timestamp)
 	//请求参数的封装
 	q := Data{
-		UserId:    os.Getenv("MV_USERID"),
+		UserId:    os.Getenv("SMS_USERID"),
 		Pwd:       pwd,
 		Mobile:    phone,
 		Content:   content,
 		TimeStamp: timestamp,
 	}
 	payload, _ := json.Marshal(q)
-	req, _ := http.NewRequest(http.MethodPost, os.Getenv("MV_DOMAIN")+"/sms/v2/std/send_single", bytes.NewReader(payload))
+	req, _ := http.NewRequest(http.MethodPost, os.Getenv("SMS_DOMAIN")+"/sms/v2/std/send_single", bytes.NewReader(payload))
 	req.Header.Set("Content-Type", "application/json")
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},

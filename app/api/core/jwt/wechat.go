@@ -81,7 +81,7 @@ func AnyCallBack(c *gin.Context) {
 }
 
 // GetQrCode
-// @Tags jwt模块
+// @Tags 登录鉴权
 // @summary 后台扫码登录>获取微信登录二维码
 // @Accept json
 // @Produce  json
@@ -92,7 +92,7 @@ func GetQrCode(r *gin.Context) {
 }
 
 // GetPhone
-// @Tags jwt模块
+// @Tags 登录鉴权
 // @summary 小程序获取用户绑定手机号
 // @Accept json
 // @Produce  json
@@ -102,13 +102,14 @@ func GetPhone(c *gin.Context) {
 	var p _Key
 	if err := c.ShouldBindQuery(&p); err != nil {
 		utils.FRP(c)
+		return
 	}
 	res, err := C.S.Wechat().GetWxMpPhoneNumber(p.Key)
 	utils.R(c, res, err)
 }
 
 // PostSignIn
-// @Tags jwt模块
+// @Tags 登录鉴权
 // @summary 小程序登录获取UserAccessToken
 // @Accept json
 // @Produce  json
@@ -118,6 +119,7 @@ func PostSignIn(c *gin.Context) {
 	var p _Code
 	if err := c.ShouldBindJSON(&p); err != nil {
 		utils.FRP(c)
+		return
 	}
 	if res, err := C.S.Wechat().AppletLogin(p.Code); err != nil {
 		utils.FRA(c)
@@ -127,7 +129,7 @@ func PostSignIn(c *gin.Context) {
 }
 
 // PostSignUp
-// @Tags jwt模块
+// @Tags 登录鉴权
 // @summary 小程序注册获取UserAccessToken
 // @Accept json
 // @Produce  json
@@ -137,6 +139,7 @@ func PostSignUp(c *gin.Context) {
 	var p KeyCode
 	if err := c.ShouldBindJSON(&p); err != nil {
 		utils.FRP(c)
+		return
 	}
 	if res, err := C.S.Wechat().AppletRegister(p.Code, p.Key, "游客_"+p.Code[0:10]); err != nil {
 		utils.FR(c, err)

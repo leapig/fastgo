@@ -3,7 +3,6 @@ package tool
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/leapig/fastgo/app/dal/entity"
-	"github.com/leapig/fastgo/app/library/aliyun"
 	utils "github.com/leapig/fastgo/app/library/util"
 	C "github.com/leapig/fastgo/app/service"
 )
@@ -49,7 +48,6 @@ func PostFile(c *gin.Context) {
 	if object, err := utils.PutFile(c.Request, "file"); err != nil {
 		utils.FRP(c)
 	} else {
-		object.Type = aliyun.GeneralObject
 		res, err := C.S.Files().SaveFile(c.GetString("tenant"), object)
 		utils.R(c, res, err)
 	}

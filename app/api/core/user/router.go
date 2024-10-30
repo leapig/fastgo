@@ -17,7 +17,4 @@ func Load(r *gin.RouterGroup) {
 	r.GET("credentials", utils.UserAccessTokenJWTMiddleware(), GetUserCredentials)
 	r.POST("credentials", utils.UserAccessTokenJWTMiddleware(), CreateUserCredentials)
 	r.DELETE("credentials", utils.UserAccessTokenJWTMiddleware(), DeleteUserCredentials)
-	//人证比对
-	r.POST("verify", utils.UserAccessTokenJWTMiddleware(), VerifyUserApplet)
-	r.GET("verify/check", utils.UserAccessTokenJWTMiddleware(), CheckRealNameAuthentication)
 }

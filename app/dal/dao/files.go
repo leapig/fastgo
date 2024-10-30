@@ -34,7 +34,7 @@ func (f *files) Create(en *entity.Files) (*entity.Files, error) {
 
 // Delete 删除文件信息数据层具体实现
 func (f *files) Delete(en *entity.Files) error {
-	tx := f.db.Where("name=? and enterprise_pk=? and type=?", en.Name, en.EnterprisePk, en.Type).Delete(&en)
+	tx := f.db.Where("name=? and enterprise_pk=? and type=?", en.Name, en.EnterprisePk).Delete(&en)
 	if tx.RowsAffected == 0 {
 		return errors.New("update fatal")
 	}
